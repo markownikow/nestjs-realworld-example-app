@@ -4,9 +4,9 @@
   "description": "[![Build Status](https://travis-ci.org/anishkny/node-express-realworld-example-app.svg?branch=master)](https://travis-ci.org/anishkny/node-express-realworld-example-app)",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "pm2 start index.js --watch --name nestapp",
     "start:watch": "nodemon",
-    "start:prod": "node dist/main.js",
+    "start:prod": "pm2 start dist/main.js --watch",
     "test": "jest --config=jest.json",
     "test:watch": "jest --watch --config=jest.json",
     "test:coverage": "jest --config=jest.json --coverage --coverageDirectory=coverage",
