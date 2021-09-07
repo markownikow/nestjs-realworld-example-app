@@ -16,7 +16,4 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ec2-user
           key: ${{ secrets.EC2_KEY }}
-          script: |
-            cd /home/ec2-user/nestjs-realworld-example-app
-            git reset --hard
-            git pull
+          script: cd /home/ec2-user/nestjs-realworld-example-app && git reset --hard && git pull
