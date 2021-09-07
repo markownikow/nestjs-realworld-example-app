@@ -10,7 +10,8 @@
     "test": "jest --config=jest.json",
     "test:watch": "jest --watch --config=jest.json",
     "test:coverage": "jest --config=jest.json --coverage --coverageDirectory=coverage",
-    "loaddata": "tsc && node --require ts-node/register dist/data.js"
+    "loaddata": "tsc && node --require ts-node/register dist/data.js",
+    "deploy": "git reset --hard && git pull; yarn start"
   },
   "repository": {
     "type": "git",

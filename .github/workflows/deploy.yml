@@ -1,0 +1,21 @@
+name: remote ssh command
+on:
+  push:
+    branches:
+      - master
+jobs:
+
+  build:
+    name: deploy
+    runs-on: ubuntu-latest
+    steps:
+      - name: deploy
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST }}
+          username: ec2-user
+          key: ${{ secrets.EC2_KEY }}
+          script: |
+            cd /home/ec2-user/nestjs-realworld-example-app
+            git reset --hard
+            git pull
