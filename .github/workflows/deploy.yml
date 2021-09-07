@@ -11,13 +11,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v1
-      - name: testing
+      - name: setup node
         uses: actions/setup-node@v2
         with:
             node-version: '14.x'
-        run: |
-          npm install
-          npm test
+      - name: install deps
+        run: npm install
+      - run: npm test
+        name: test
 
       - name: deploy
         uses: appleboy/ssh-action@master
