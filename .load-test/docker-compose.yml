@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  master:
+    image: locustio/locust
+    ports:
+      - "8089:8089"
+    volumes:
+      - ./:/mnt/locust
+    command: -f /mnt/locust/locustfile.py --master -H http://master:8089
+
+  worker:
+    network_mode: host
+    image: locustio/locust
+    volumes:
+      - ./:/mnt/locust
+    command: --headless -u 1 -r 1 -f /mnt/locust/locustfile.py --loglevel DEBUG  --host http://localhost:3000
+
+

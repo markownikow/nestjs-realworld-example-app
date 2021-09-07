@@ -6,11 +6,11 @@
   "scripts": {
     "start": "node index.js",
     "start:watch": "nodemon",
-    "prestart:prod": "tsc",
     "start:prod": "node dist/main.js",
     "test": "jest --config=jest.json",
     "test:watch": "jest --watch --config=jest.json",
-    "test:coverage": "jest --config=jest.json --coverage --coverageDirectory=coverage"
+    "test:coverage": "jest --config=jest.json --coverage --coverageDirectory=coverage",
+    "loaddata": "tsc && node --require ts-node/register dist/data.js"
   },
   "repository": {
     "type": "git",
@@ -36,19 +36,22 @@
     "class-validator": "^0.11.1",
     "crypto": "^1.0.1",
     "crypto-js": "^4.0.0",
+    "dotenv": "^10.0.0",
+    "faker": "^5.5.3",
     "jsonwebtoken": "^8.5.1",
     "mysql": "^2.18.1",
     "passport-jwt": "^4.0.0",
+    "pg": "^8.7.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "^6.5.5",
     "slug": "^1.1.0",
     "swagger-ui-express": "^4.1.4",
     "typeorm": "^0.2.24",
-    "typescript": "^3.8.3"
+    "typescript": "^3.8.3",
+    "@types/node": "^13.13.4"
   },
   "devDependencies": {
     "@types/jest": "^25.2.1",
-    "@types/node": "^13.13.4",
     "atob": ">=2.1.0",
     "deep-extend": ">=0.5.1",
     "extend": ">=3.0.2",

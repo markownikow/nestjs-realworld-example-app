@@ -1,0 +1,27 @@
+FROM node:16.8.0-slim as builder
+WORKDIR /build
+
+
+COPY ./package.json ./
+COPY ./yarn.lock ./
+
+
+RUN yarn install --production
+COPY . .
+RUN npx tsc
+
+# --------------
+
+FROM node:16.8.0-alpine
+ENV NODE_ENV=production
+USER node
+
+WORKDIR /application
+
+COPY --from=builder --chown=node:node /build/dist/ ./dist/
+COPY --from=builder --chown=node:node /build/node_modules/ ./node_modules
+COPY --from=builder --chown=node:node /build/package.json/ ./package.json
+
+EXPOSE 3000
+
+CMD ["yarn", "start:prod"]
